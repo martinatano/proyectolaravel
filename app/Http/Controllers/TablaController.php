@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use GuzzleHttp\Client;
 
 class TablaController extends Controller
@@ -18,8 +18,15 @@ class TablaController extends Controller
         }
     }
 
-    function eliminar($id, $username)
-    {
-        return view('userDetails', ['id' => $id, 'username' => $username]);
+   function userDetails(){
+    $username = Request::input('username');
+    try{
+        $client = new Client(['verify' => false]);
+        $request = $client->get('https://api.github.com/users/'.$username);
+        $response = json_decode($request->getBody()->getContents());
+        return json_decode($response);
+    } catch(RequestException $e){
+        return $e->getMessage();
     }
+   }
 }

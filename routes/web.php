@@ -13,4 +13,4 @@ use App\Http\Controllers\TablaController;
 */
 
 Route::get('/', [TablaController::class, 'index']);
-Route::get('/eliminarUsuario/{id}/{username}', [TablaController::class, 'eliminar']);
+Route::post('/userDetails/{login}', [TablaController::class, 'userDetails']);
