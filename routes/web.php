@@ -13,4 +13,4 @@ use App\Http\Controllers\TablaController;
 */
 
 Route::get('/', [TablaController::class, 'index']);
-Route::post('/userDetails/{login}', [TablaController::class, 'userDetails']);
+Route::post('/userDetails', [TablaController::class, 'userDetails']);
